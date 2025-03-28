@@ -18,14 +18,6 @@ import { selectCurrentUser, updateAvatar, updateCoverImage } from '@/features/us
 import { AppDispatch } from '@/app/store';
 import ActionTooltip from '../ActionTooltip';
 
-// const user = {
-//     id: "jf489jrf9458598te46gd",
-//     username: "Jovial Kanwadia",
-//     email: "jovialkanwadia@gmail.com",
-//     avatar.url: "https://github.com/shadcn.png",
-//     coverImage.url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcXVpcnesw3j5p4_hflMMzyZSpbDfL5HwQQg&s",
-// }
-
 const UserButton = () => {
     const user = useSelector(selectCurrentUser);
     const dispatch = useDispatch<AppDispatch>()
@@ -37,7 +29,6 @@ const UserButton = () => {
         if (event.target.files && event.target.files[0]) {
             const avatarFile = event.target.files[0];
             dispatch(updateAvatar({ avatar: avatarFile }))
-            // console.log('Selected avatar:', avatarFile);
         }
     };
 
@@ -45,7 +36,6 @@ const UserButton = () => {
         if (event.target.files && event.target.files[0]) {
             const coverImageFile = event.target.files[0];
             dispatch(updateCoverImage({ coverImage: coverImageFile }))
-            // console.log('Selected cover image:', coverImageFile);
         }
     };
 
@@ -53,19 +43,69 @@ const UserButton = () => {
         <>
             <Dialog>
                 <ActionTooltip side="right" align="end" label="User Button">
-                <DialogTrigger asChild>
-                    <Avatar>
-                        <AvatarImage src={user?.avatar?.url ?? 'https://github.com/shadcn.png'} alt="@shadcn" className='cursor-pointer'/>
-                    </Avatar>
-                </DialogTrigger>
+                    <DialogTrigger asChild>
+                        <Avatar>
+                            <AvatarImage
+                                src={user?.avatar?.url ?? 'https://github.com/shadcn.png'}
+                                alt="@shadcn"
+                                className='cursor-pointer'
+                            />
+                        </Avatar>
+                    </DialogTrigger>
                 </ActionTooltip>
                 <DialogContent className="sm:max-w-[525px]">
+                    {/* Cover and Avatar with hover overlays */}
                     <div className="w-full h-36 relative">
-                        <div className="w-full h-36 overflow-hidden">
-                            <img src={user?.coverImage?.url ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcXVpcnesw3j5p4_hflMMzyZSpbDfL5HwQQg&s'} className="absolute rounded-xl inset-0 w-full h-full object-cover" alt="Cover Image" />
+                        {/* Cover Image */}
+                        <div
+                            className="w-full h-36 overflow-hidden relative group cursor-pointer"
+                            onClick={() => coverImageInputRef.current?.click()}
+                        >
+                            <img
+                                src={user?.coverImage?.url ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcXVpcnesw3j5p4_hflMMzyZSpbDfL5HwQQg&s'}
+                                className="absolute rounded-xl inset-0 w-full h-full object-cover"
+                                alt="Cover Image"
+                            />
+                            {/* pointer-events-none ensures the overlay does NOT block clicks */}
+                            <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition pointer-events-none">
+                                <span className="text-white">Change Cover</span>
+                            </div>
                         </div>
-                        <img src={user?.avatar?.url ?? 'https://github.com/shadcn.png'} className="absolute bottom-0 left-0 transform translate-y-1/2 w-24 h-24 rounded-full border-4 border-white" alt="Avatar" style={{ width: '6rem', height: '6rem' }} />
+                        
+                        {/* Avatar Container */}
+                        <div
+                            className="absolute bottom-0 left-0 transform translate-y-1/2 w-24 h-24 cursor-pointer group"
+                            style={{ width: '6rem', height: '6rem' }}
+                            onClick={() => avatarInputRef.current?.click()}
+                        >
+                            <div className="relative w-full h-full">
+                                <img
+                                    src={user?.avatar?.url ?? 'https://github.com/shadcn.png'}
+                                    className="w-full h-full object-cover rounded-full"
+                                    alt="Avatar"
+                                />
+                                <div className="absolute inset-0 bg-black/50 rounded-full flex justify-center items-center opacity-0 group-hover:opacity-100 transition pointer-events-none">
+                                    <span className="text-white text-sm">Change Avatar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input
+                            type="file"
+                            ref={avatarInputRef}
+                            style={{ display: 'none' }}
+                            onChange={handleAvatarChange}
+                            accept="image/*"
+                        />
+                        <input
+                            type="file"
+                            ref={coverImageInputRef}
+                            style={{ display: 'none' }}
+                            onChange={handleCoverImageChange}
+                            accept="image/*"
+                        />
                     </div>
+
                     <DialogHeader className="mt-10">
                         <DialogTitle>{user?.username ?? 'Jovial Kanwadia'}</DialogTitle>
                         <DialogDescription>
@@ -80,22 +120,6 @@ const UserButton = () => {
                     <div className="grid gap-4 py-2">
                         <PasswordForm />
                         <DialogFooter>
-                            <Button onClick={() => avatarInputRef.current?.click()}>Change Avatar</Button>
-                            <input
-                                type="file"
-                                ref={avatarInputRef}
-                                style={{ display: 'none' }}
-                                onChange={handleAvatarChange}
-                                accept="image/*"
-                            />
-                            <Button onClick={() => coverImageInputRef.current?.click()}>Change Cover Image</Button>
-                            <input
-                                type="file"
-                                ref={coverImageInputRef}
-                                style={{ display: 'none' }}
-                                onChange={handleCoverImageChange}
-                                accept="image/*"
-                            />
                             <LogoutBtn />
                         </DialogFooter>
                     </div>
