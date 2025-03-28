@@ -35,6 +35,8 @@ Navigate to the backend directory:
 cd backend
 ```
 
+Create the `temp` folder in public directory.
+
 Create a `.env` file with the following content:
 
 ```env
