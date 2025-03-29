@@ -155,28 +155,24 @@ const ManageMembersItem = () => {
 
                 {admin && ((moderators.length > 0 || guests.length > 0)) && (<CommandSeparator className="bg-white/20 my-2" />)}
                 
-                {/* If you want to not show 'moderator' text when no moderators are present, you can uncomment the code below and comment the one below the uncommented. */}
-                {/* {moderators.length > 0 && (
+                
+                {moderators.length > 0 && (
                     <CommandGroup heading="Moderators" className="text-white">
                         {moderators.map((moderator) => renderProfile(moderator.profileId, "MODERATOR", moderator._id))}
                     </CommandGroup>
-                )} */}
-                <CommandGroup heading="Moderators" className="text-white">
-                    {moderators.map((moderator) => renderProfile(moderator.profileId, "MODERATOR", moderator._id))}
-                </CommandGroup>
+                )}
+                
                 {moderators.length > 0 && guests.length > 0 && <CommandSeparator className="bg-white/20 my-2" />}
 
-                {/* If you want to not show 'guests' text when no guests are present, you can uncomment the code below and comment the one below the uncommented. */}
-                {/* {guests.length > 0 && (
+                
+                {guests.length > 0 && (
                     <CommandGroup heading="Guests" className="text-white">
                         {guests.map((guest) => renderProfile(guest.profileId, "GUEST", guest._id))}
                     </CommandGroup>
-                )} */}
+                )}
                 
                 
-                <CommandGroup heading="Guests" className="text-white">
-                    {guests.map((guest) => renderProfile(guest.profileId, "GUEST", guest._id))}
-                </CommandGroup>
+                
                 
             </CommandList>
         </Command>
