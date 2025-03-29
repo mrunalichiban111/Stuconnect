@@ -166,7 +166,7 @@ const ManageMembersItem = () => {
 
                 
                 {guests.length > 0 && (
-                    <CommandGroup heading="Guests" className="text-white">
+                    <CommandGroup heading="Members" className="text-white">
                         {guests.map((guest) => renderProfile(guest.profileId, "GUEST", guest._id))}
                     </CommandGroup>
                 )}
