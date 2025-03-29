@@ -51,7 +51,7 @@ const ServerChannels = () => {
 
   return (
     <>
-      {currentUserRole === 'ADMIN' && (<CreateChannelModal />)}
+      {(currentUserRole === 'ADMIN' || currentUserRole === 'MODERATOR') && (<CreateChannelModal />)}
       <Command className="rounded-lg h-screen dark:bg-[#2B2D31] border-none text-white">
         <CommandInput placeholder="Search channel ..." />
         <CommandList>
