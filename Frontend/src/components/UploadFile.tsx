@@ -46,10 +46,15 @@ const UploadFile: React.FC<UploadFileProps> = ({ buttonType }) => {
         >
           <input {...getInputProps()} />
           {preview ? (
-            <img src={preview} alt="Preview" className="h-[200px] w-auto" />
+            <img
+              src={preview}
+              alt="Preview"
+              className="h-20 w-20 rounded-full object-cover mx-auto"
+            />
           ) : (
             <p>Drag and drop an image here, or click to select one</p>
           )}
+
         </div>
       ) : (
         <div className="text-center">
