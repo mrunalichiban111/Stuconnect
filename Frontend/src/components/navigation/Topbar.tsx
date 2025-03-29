@@ -36,9 +36,9 @@ const Topbar = () => {
   }
 
   return (
-    <div className="w-full h-full dark:bg-[rgb(30_31_34/1)] bg-[rgb(203_213_225/1)] flex items-center">
+    <div className="w-full h-full bg-background flex items-center">
 
-      <button onClick={toggleModal} className='w-auto hover:bg-gray-200 dark:hover:bg-zinc-700 flex text-md px-3 items-center h-10 border-neutral-200 rounded-md mx-1  transition'>
+      <button onClick={toggleModal} className='w-auto hover:text-blue-400 flex text-md px-3 items-center h-10 border-neutral-200 rounded-md mx-1 dark:border-neutral-800 border-2 dark:bg-zinc-700/50 transition'>
         Members
         <Users className="w-4 h-4 m-1 rounded-sm" />
       </button>

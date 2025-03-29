@@ -57,7 +57,7 @@ const CreateChannelModal = () => {
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger>
-                <div className="w-56 mb-2 bg-white hover:bg-zinc-300 transition h-9 dark:bg-[#1E1F22] flex items-center justify-center rounded-none">Create Channel</div>
+                <div className="w-56 rounded-md bg-zinc-200 hover:bg-zinc-300 transition h-10 dark:bg-[#1E1F22] flex items-center justify-center">Create Channel</div>
             </DialogTrigger>
             <DialogContent className="bg-white dark:bg-black text-black dark:text-white p-0 overflow-hidden">
                 <DialogTitle className="text-2xl mt-6 text-center font-bold">
