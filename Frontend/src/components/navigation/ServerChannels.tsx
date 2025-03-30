@@ -61,7 +61,7 @@ const ServerChannels = () => {
               <CommandItem
                 key={channel._id}
                 onSelect={() => { handleTextChannelClick(channel._id) }}
-                className={cn(params.channelId === channel._id ? `dark:bg-[#1E1F22]` : ``, `hover:bg-zinc-300`)}
+                className={cn(params.channelId === channel._id ? `dark:bg-[#1E1F22]` : ``, `hover:bg-zinc-700`)}
               >
                 <Hash className="mr-2 h-4 w-4"/>
                 <span>{channel.name}</span>
