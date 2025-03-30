@@ -41,11 +41,8 @@ const DeleteServerModal = () => {
             // Refresh the list of servers and the user's profile
             dispatch(fetchServers({ profileId: profile._id }));
             dispatch(fetchProfile());
-            if (profile?.servers && profile.servers.length > 0) {
-                navigate(`/servers/${profile.servers[0]}`);
-            } else {
-                navigate(`/dashboard`);
-            }
+            navigate(`/servers/67e91025d9c6657869224873/channels/undefined`); // Redirect to a default server or channel after deletion
+            
         } catch (error) {
             console.error("Error deleting server:", error);
         }
