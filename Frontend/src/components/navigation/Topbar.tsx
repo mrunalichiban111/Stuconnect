@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { selectServers, Server } from "@/features/server/ServerSlice";
 import InvitePeopleModal from "../modals/InvitePeopleModal";
 import LeaveServerModal from "../modals/LeaveServerModal";
+import DeleteServerModal from "../modals/DeleteServerModal";
 
 const Topbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +55,7 @@ const Topbar = () => {
         <LeaveServerModal/>
       )}
       {isAdmin && (
-        <div className="mx-2">Delete Server</div>
+        <DeleteServerModal/>
       )}
     </div>
   )

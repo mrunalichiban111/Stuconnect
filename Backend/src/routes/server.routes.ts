@@ -4,6 +4,7 @@ import {
     getServersWhereUserIsMember,
     joinServer,
     leaveServer,
+    deleteServer
 } from '../controllers/server.controller.js'
 import { verifyJWT } from "../middleware/auth.middleware.js";
 import { upload } from "../middleware/multer.middleware.js";
@@ -26,5 +27,7 @@ router.route("/createServer").post(
 router.route("/joinServer").post(verifyJWT, joinServer)
 
 router.route("/leaveServer").post(verifyJWT, leaveServer)
+
+router.route("/deleteServer").post(verifyJWT, deleteServer)
 
 export default router

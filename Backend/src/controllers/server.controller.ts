@@ -216,10 +216,32 @@ const leaveServer = asyncHandler(async (req: AuthRequest, res: Response) => {
     return res.status(200).json(new ApiResponse(200, [], "Left server successfully"));
 });
 
+const deleteServer = asyncHandler(async (req, res) => {
+    const { serverId, profileId } = req.body;
+    if (!profileId) {
+        throw new ApiError(400, "Cannot get profile Id");
+    }
+    if (!serverId) {
+        throw new ApiError(400, "Cannot get server Id");
+    }
+    const server = await Server.findById(serverId);
+    if (!server) {
+        throw new ApiError(404, "Server not found");
+    }
+    await Server.findByIdAndDelete(serverId);
+    // Remove server reference from the profile's servers array
+    await Profile.findByIdAndUpdate(profileId, { $pull: { servers: serverId } });
+    // Remove related channels and members
+    await Channel.deleteMany({ serverId });
+    await Member.deleteMany({ serverId });
+    return res.status(200).json(new ApiResponse(200, server, "Server deleted successfully"));
+});
+
 
 export {
     getServersWhereUserIsMember,
     createServer,
     joinServer,
-    leaveServer
+    leaveServer,
+    deleteServer
 }
