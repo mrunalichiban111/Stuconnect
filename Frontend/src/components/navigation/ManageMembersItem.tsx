@@ -149,17 +149,31 @@ const ManageMembersItem = () => {
             />
             <CommandList className="border-none">
                 <CommandEmpty className="text-white">No results found.</CommandEmpty>
-                <CommandGroup heading="Admin" className="text-white">
+                <CommandGroup heading="Admin" className="text-white">  
                     {admin && renderProfile(admin.profileId, "ADMIN", admin._id)}
-                </CommandGroup>
-                <CommandSeparator className="bg-white/20 my-2" />
-                <CommandGroup heading="Moderators" className="text-white">
-                    {moderators.map((moderator) => renderProfile(moderator.profileId, "MODERATOR", moderator._id))}
-                </CommandGroup>
-                <CommandSeparator className="bg-white/20 my-2" />
-                <CommandGroup heading="Members" className="text-white">
-                    {guests.map((guest) => renderProfile(guest.profileId, "GUEST", guest._id))}
-                </CommandGroup>
+                </CommandGroup>  
+
+                {admin && ((moderators.length > 0 || guests.length > 0)) && (<CommandSeparator className="bg-white/20 my-2" />)}
+                
+                
+                {moderators.length > 0 && (
+                    <CommandGroup heading="Moderators" className="text-white">
+                        {moderators.map((moderator) => renderProfile(moderator.profileId, "MODERATOR", moderator._id))}
+                    </CommandGroup>
+                )}
+                
+                {moderators.length > 0 && guests.length > 0 && <CommandSeparator className="bg-white/20 my-2" />}
+
+                
+                {guests.length > 0 && (
+                    <CommandGroup heading="Members" className="text-white">
+                        {guests.map((guest) => renderProfile(guest.profileId, "GUEST", guest._id))}
+                    </CommandGroup>
+                )}
+                
+                
+                
+                
             </CommandList>
         </Command>
     );
