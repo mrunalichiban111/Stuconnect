@@ -50,7 +50,7 @@
     "react-router-dom": "^6.23.1",
     "react-toastify": "^10.0.6",
     "redux-persist": "^6.0.0",
-    "sendbird": "^3.1.33",
+    "sendbird": "^3.0.126",
     "socket.io-client": "^4.7.5",
     "stream-chat": "^8.37.0",
     "stream-chat-react": "^11.23.2",
