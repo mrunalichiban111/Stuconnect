@@ -23,7 +23,7 @@ const ManageMembers = ({ isOpen, onClose }: ManageMembersProps) => {
             <Users className="ml-3"/>
           </SheetTitle>
           <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
+            View & Manage Members.
           </SheetDescription>
         </SheetHeader>
         <div className="mt-4">
