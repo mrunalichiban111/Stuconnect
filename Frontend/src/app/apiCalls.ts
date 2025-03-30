@@ -88,6 +88,16 @@ export const leaveServer = async (profileId: string, serverId: string) => {
     }
 }
 
+export const deleteServer = async (profileId: string, serverId: string) => {
+    try {
+        const response = await api.post('/servers/deleteServer', { profileId, serverId });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching profiles:', error);
+        throw error;
+    }
+}
+
 export const deleteChannel = async (channelId: string, serverId: string) => {
     try {
         const response = await api.post('/channels/deleteChannel', { channelId, serverId });
