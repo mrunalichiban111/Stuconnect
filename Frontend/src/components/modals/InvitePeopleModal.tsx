@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Copy, RefreshCw, UserPlus } from "lucide-react";
 import { useState } from "react";
 
+
 interface ServerModalProps {
     inviteCode: string;
 }

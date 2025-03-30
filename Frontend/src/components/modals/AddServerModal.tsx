@@ -108,7 +108,7 @@ const AddServerModal = ({ isOpen, onClose }: ServerModalProps) => {
                                 </div>
                             </div>
                             <DialogFooter className="bg-gray-100 dark:bg-black px-6 py-4">
-                                <Button type="submit" variant="primary">
+                                <Button type="submit" variant="primary" >
                                     Create
                                 </Button>
                             </DialogFooter>
@@ -146,13 +146,13 @@ const AddServerModal = ({ isOpen, onClose }: ServerModalProps) => {
                 )}
                 <DialogFooter className="bg-gray-100 dark:bg-black px-6 py-4 grid grid-cols-2">
                     <div
-                        className={`cursor-pointer justify-center items-center rounded-lg flex px-4 py-2 ${activeForm === 'create' ? 'bg-blue-600 text-white' : 'bg-zinc-500 hover:bg-zinc-600'}`}
+                        className={`cursor-pointer justify-center items-center rounded-lg flex px-4 py-2 ${activeForm === 'create' ? "bg-indigo-500 text-white hover:bg-indigo-500/90" : 'bg-zinc-500 hover:bg-zinc-600'}`}
                         onClick={() => setActiveForm('create')}
                     >
                         Create Server
                     </div>
                     <div
-                        className={`cursor-pointer justify-center items-center rounded-lg flex px-4 py-2 ${activeForm === 'join' ? 'bg-blue-600 text-white' : 'bg-zinc-500 hover:bg-zinc-600'}`}
+                        className={`cursor-pointer justify-center items-center rounded-lg flex px-4 py-2 ${activeForm === 'join' ? "bg-indigo-500 text-white hover:bg-indigo-500/90" : 'bg-zinc-500 hover:bg-zinc-600'}`}
                         onClick={() => setActiveForm('join')}
                     >
                         Join Server
